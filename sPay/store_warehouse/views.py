@@ -10,3 +10,8 @@ def post_list(request):
                   {"list": stor_list})
 
 
+def post_detail(request, id_num):
+    p_d = Store.objects.get(id=id_num)
+    return render(request,
+                  "store_warehouse/post_detail.html",
+                  {"post_detail": p_d})

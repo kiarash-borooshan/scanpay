@@ -1,6 +1,11 @@
 
 <ul>
     {% for l in list %}
-        <p> {{ l.name }}</p>
+        <p>
+            <a href="{% url 'store_warehouse:post_detail' l.id %}">
+                {{ l.name }}
+            </a>
+        </p>
+
     {% endfor %}
 </ul>
