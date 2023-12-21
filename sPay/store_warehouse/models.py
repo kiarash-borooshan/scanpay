@@ -11,34 +11,42 @@ class Store(models.Model):
                              blank=True, null=True)
 
     """ اسکن QrCode برای محصول مشابه که از قبل اسکن شده و اطلاعات آن وارد شده است."""
-    scan_same_QR = models.ImageField(upload_to="QR-Code/",
+    scan_same_QR = models.ImageField(verbose_name="QrCode کالای مشابه",
+                                     upload_to="QR-Code/",
                                      blank=True, null=True)
 
     """ اسکن QrCode برای وارد کردن اطلاعات محصول """
-    scan_QR = models.ImageField(upload_to="QR-Code/",
+    scan_QR = models.ImageField(verbose_name="QRCode خام",
+                                upload_to="QR-Code/",
                                 blank=True, null=True)
 
     """ تصویر جلوی محصول """
-    image_front = models.ImageField(upload_to="image_front/",
+    image_front = models.ImageField(verbose_name="تصویر از جلوی کالا",
+                                    upload_to="image_front/",
                                     blank=True, null=True)
 
     """ تصویر پشت محصول """
-    image_behind = models.ImageField(upload_to="image_behind/",
+    image_behind = models.ImageField(verbose_name="تصویر از پشت کالا",
+                                     upload_to="image_behind/",
                                      blank=True, null=True)
 
     """ نام محصول """
-    name = models.CharField(max_length=200,
+    name = models.CharField(verbose_name="نام کالا",
+                            max_length=200,
                             blank=True, null=True)
 
     """ کد محصول """
-    code = models.CharField(max_length=40,
+    code = models.CharField(verbose_name="کد کالا",
+                            max_length=40,
                             blank=True, null=True)
 
     """ توضیحات محصول """
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(verbose_name="توضیحات کالا",
+                                   blank=True, null=True)
 
     """ لینک ویدئو توضیحات محصول در آپارات، دیدئو، یوتیوب و ...  """
-    link = models.URLField(blank=True, null=True)
+    link = models.URLField(verbose_name=" لینک ویدئو توضیحات محصول در آپارات، دیدئو، یوتیوب و ...  ",
+                           blank=True, null=True)
 
     """ دسته‌بندی بر اساس دسته‌بندی هنگام ثبت نام می‌باشد
      به عنوان مثال اگر در زمان ثبت‌نام مدیریت عنوان فروشگاه اسباب‌بازی ذکر شده باشد
@@ -48,6 +56,17 @@ class Store(models.Model):
         ("۱", "۱"),
         ("۲", "۲"),
     )
+
+    age = models.IntegerField(verbose_name="سن",
+                              blank=True, null=True)
+
+    box = models.CharField(verbose_name="نوع بسته‌بندی(نیم‌جعبه، نیم‌جعبه با طلق و ...",
+                           max_length=100,
+                           blank=True, null=True,)
+
+    variety = models.CharField(verbose_name="ساده، باطری‌خور، کنترلی و ... ",
+                               max_length=100,
+                               blank=True, null=True,)
 
     category = models.CharField(choices=category_choice,
                                 max_length=100,
