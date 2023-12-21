@@ -1,48 +1,11 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/style.css">
-
-    <script src="https://kit.fontawesome.com/9fea9eab69.js" crossorigin="anonymous"></script>
-    <title>Index</title>
-</head>
-
+{% block content %}
 <body>
-    <nav class="navbar is-light" role="navigation">
-        <div class="navbar-brand">
-            <p class="navbar-item title is-3"><span class="icon"><i class="fa-solid fa-hashtag"></i></span></p>
-        </div>
-        <div class="navbar-menu">
-            <div class="navbar-start">
 
-                <a href="#" class="navbar-item p-2">Home</a>
-                <a href="#" class="navbar-item p-2">Categories</a>
-            </div>
-            <div class="navbar-end">
-
-                <a href="#" class="navbar-item">Log out</a>
-                <a href="#" class="navbar-item dashboard">
-                    Nima Parandavar
-                    <div>
-                        <img src="#" alt="#" class="avatar" />
-                    </div>
-                    <span class="icon"><i class="fa-solid fa-user"></i></span>
-                </a>
-                <span class="navbar-item has-text-muted">|</span>
-                <a href="#" class="navbar-item is-danger">
-                    <span>Write a new post</span>
-                </a>
-                <a href="#" class="navbar-item">Log in</a>
-                <a href="#" class="navbar-item">Sign up</a>
-            </div>
-        </div>
-    </nav>
     <div class="container">
 
         <div class="columns">
@@ -72,48 +35,15 @@
                 </div>
 
                 <!-- pagination -->
-                <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous" href="#">Previous</a>
-                    <a class="pagination-next" href="#" disabled>Next page</a>
-                    <ul class="pagination-list">
-                        <li>
-                            <a href="#" class="pagination-link <!--is-current -->" aria-label="Goto page 1">2</a>
-                        </li>
-                    </ul>
-                </nav>
+                {% include 'partial/pagination.html' %}
             </div>
 <!--            category -->
-            <div class="column">
-                <div class="panel is-light">
-                    <p class="panel-heading ">Categories</p>
-                    <a href="#" class="panel-block">
-                        <p>category name</p>
-                    </a>
-                </div>
-                <div class="panel is-light">
-                    <p class="panel-heading">
-                        Tags
-                    </p>
-                    <a href="#" class="button is-small is-rounded" style="margin:5px">
-                        <p>tag name</p>
-                    </a>
-                </div>
-            </div>
+            {% include 'partial/category.html' %}
         </div>
     </div>
     <!-- footer -->
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p><strong>Nima Parandavar</strong></p>
-            <p><a href="https://www.instagram.com/nima.parandavar/" class="is-link"><span><i
-                            class="fa-brands fa-instagram"></i></span> nima.parandavar </a></p>
-            <p><a href="https://github.com/nima-parandavar" class="is-link"><span><i
-                            class="fa-brands fa-git-square"></i></span> nima-parandavar </a></p>
-            <p><a href="https://www.linkedin.com/in/nima-p-753b97138/" class="is-link"><span><i
-                            class="fa-brands fa-linkedin"></i></span> nima-p-753b97138</a></p>
 
-        </div>
-    </footer>
 </body>
 
 </html>
+{% endblock %}
