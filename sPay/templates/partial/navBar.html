@@ -5,9 +5,14 @@
     <div class="navbar-menu">
         <div class="navbar-start">
 
-            <a href="#" class="navbar-item p-2">Home</a>
+            <a href="{% url 'store_warehouse:first_page' %}" class="navbar-item p-2">Home</a>
             <a href="#" class="navbar-item p-2">Categories</a>
+            <a href="{% url 'store_warehouse:post_list' %}" class="navbar-item p-2"> نمایش پست‌ها </a>
+            <a href="{% url 'store_warehouse:add_post' %}" class="navbar-item p-2"> add post </a>
         </div>
+
+
+
         <div class="navbar-end">
 
             <a href="#" class="navbar-item">Log out</a>

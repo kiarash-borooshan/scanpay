@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+        <h1 class="title is-1"> اضافه کردن کالا </h1>
+        <form method="post">
+            {% csrf_token %}
+<!--            {% for f in form %}-->
+<!--                -->
+<!--                <div class="block">-->
+<!--                    <label for="username" class="label">Username</label>-->
+<!--                    <div class="control"><input type="text" name="username" id="username" class="input"></div>-->
+<!--                </div>-->
+
+<!--            {% endfor %}-->
+            <div class="block">
+                {{ form.as_p }}
+                <button type="submit"> add post </button>
+            </div>
+        </form>
+</div>
+{% endblock %}
