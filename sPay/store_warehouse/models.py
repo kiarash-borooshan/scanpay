@@ -52,10 +52,6 @@ class Store(models.Model):
      به عنوان مثال اگر در زمان ثبت‌نام مدیریت عنوان فروشگاه اسباب‌بازی ذکر شده باشد
      در این قسمت فقط زیر مجموعه‌های مربوط به آن نمایش داده می‌شود 
      مثلا الکتریکی یا ساده، پلاستیکی یا پارچه ای و ..."""
-    category_choice = (
-        ("۱", "۱"),
-        ("۲", "۲"),
-    )
 
     age = models.IntegerField(verbose_name="سن",
                               blank=True, null=True)
@@ -68,10 +64,21 @@ class Store(models.Model):
                                max_length=100,
                                blank=True, null=True,)
 
+    category_choice = (
+        ("۱", "۱"),
+        ("۲", "۲"),
+    )
     category = models.CharField(choices=category_choice,
-                                max_length=100,
-                                blank=True, null=True,
-                                verbose_name="دسته‌بندی مربوط به هر صنف ")
+                                 max_length=100,
+                                 blank=True, null=True,
+                                 verbose_name="دسته‌بندی")
+    
+    category2 = models.ForeignKey(to="Category2",
+                                  on_delete=models.SET_NULL,
+                                  related_name="category_store",
+                                  max_length=100,
+                                  blank=True, null=True,
+                                  verbose_name="دسته‌بندی مربوط به هر صنف ")
 
     """ قیمت بدون ۳ صفر. به عنوان مثال سیصد و چهل هزار تومان باید بصورت ۳۴۰ و
      یک میلیون و دویست هزار تومان بصورت ۱۲۰۰"""
@@ -86,3 +93,12 @@ class Store(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Category2(models.Model):
+    title = models.CharField(verbose_name="گروه‌بندی",
+                             max_length=50,
+                             null=True, blank=True)
+    slug = models.SlugField()
+    published = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
