@@ -69,9 +69,9 @@ class Store(models.Model):
         ("۲", "۲"),
     )
     category = models.CharField(choices=category_choice,
-                                 max_length=100,
-                                 blank=True, null=True,
-                                 verbose_name="دسته‌بندی")
+                                max_length=100,
+                                blank=True, null=True,
+                                verbose_name="دسته‌بندی")
     
     category2 = models.ForeignKey(to="Category2",
                                   on_delete=models.SET_NULL,
@@ -102,3 +102,8 @@ class Category2(models.Model):
     slug = models.SlugField()
     published = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.title
