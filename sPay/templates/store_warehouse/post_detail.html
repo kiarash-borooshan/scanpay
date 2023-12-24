@@ -4,6 +4,7 @@
 
 
 {% block content %}
+<center>
 <div class="column is-6 head">
 
     {% if p_d.scan_same_QR %}
@@ -41,35 +42,96 @@
         </div>
     </div>
     <hr>
+    <br>
 
-    <h3 class="title is-3">Comments</h3>
-    <form class="field">
-        <div class="control block">
-            <input type="textarea" class="textarea is-small ta">
+<!--    comment -->
+    <div class="blog-comment-box">
+        <h3> نظرات </h3>
+
+        {% for cmnt in comment %}
+            <div class="comment-item">
+            <div class="comment-item-left">
+                <img src="images/avt-img.jpg" alt="">
+            </div>
+            <div class="comment-item-right">
+                <div dir="rtl" class="pull-left">
+                    نام کاربر:
+                    {{ cmnt.name }}
+<!--                    <a href="#"></a>-->
+                </div>
+                <div class="pull-right">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    تاریخ : <span>{{ cmnt.date | timesince}}</span>
+                </div>
+                <div dir="rtl" class="des-l">
+                    <p>{{ cmnt.message }}</p>
+                </div>
+
+<!--                پاسخ به نظر -->
+<!--                <a href="#" class="right-btn-re">-->
+<!--                    <i class="fa fa-reply" aria-hidden="true"></i>-->
+<!--                    Reply-->
+<!--                </a>-->
+                <br>
+            </div>
         </div>
-        <div class="control block">
-            <input type="submit" class="button is-light" value="send">
+        {% endfor %}
+
+        <hr>
+        <br>
+
+<!--        comment form -->
+        <div class="comment-respond-box">
+
+            <h3>نظرات خود را بنویسید </h3>
+            # TODO بعد از ثبت نظر اتوماتیک رفرش شده و تکرار نشود
+            <br>
+
+<!--            نام کاربر -->
+            <div class="comment-respond-form">
+                <form id="commentrespondform" class="comment-form-respond row" method="post">
+                    {% csrf_token %}
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input id="name_com"
+                                   class="form-control"
+                                   name="name"
+                                   placeholder="نام کاربر "
+                                   type="text">
+                        </div>
+                        <br><br>
+
+<!--                         ایمیل کاربر -->
+                        <div class="form-group">
+                            <input id="email_com"
+                                   class="form-control"
+                                   name="email"
+                                   placeholder="ایمیل کاربر "
+                                   type="email">
+                        </div>
+                        <br><br>
+                    </div>
+
+<!--                     نظر کاربر -->
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <textarea class="form-control"
+                                      name="message"
+                                      id="textarea_com"
+                                      placeholder="نظر کاربر "
+                                      rows="2"></textarea>
+                        </div>
+                        <br><br>
+                    </div>
+
+<!--                    ثبت نظر کاربر -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <button class="btn btn-submit">ثبت نظر </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
-<!--    <div class="comments">-->
-<!--        <ul>-->
-<!--            <li class="comment">-->
-<!--                <div class="author">-->
-<!--                    <img src="./static/img.jpg" class="author-img" alt="">-->
-<!--                    <h4 class="title is-4">Nima Parandavar</h4>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, asperiores.</p>-->
-<!--            </li>-->
-<!--            <li class="comment">-->
-<!--                <div class="author">-->
-<!--                    <img src="./static/img.jpg" class="author-img" alt="">-->
-<!--                    <h4 class="title is-4">Nima Parandavar</h4>-->
-<!--                </div>-->
-<!--                <hr>-->
-<!--                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, asperiores.</p>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
+    </div>
 </div>
 {% endblock %}
+</center>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Store, Category2
+from .models import Store, Category2, Comment
 
 
 @admin.register(Store)
@@ -16,3 +16,8 @@ class CategoryDecor(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ("title", "slug")
     }
+
+
+@admin.register(Comment)
+class CommentDecore(admin.ModelAdmin):
+    list_display = ("name", "email")

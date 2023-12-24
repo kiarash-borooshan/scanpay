@@ -27,3 +27,9 @@ ratail warehose
 در دسترس می‌باشد.
 
 </div>
+
+css html templates from: <br>
+https://github.com/nima-parandavar/simple_blog_template
+<br>
+https://www.free-css.com/free-css-templates/page249/yamifood
+<br>

@@ -1,3 +1,4 @@
+from datetime import timezone, datetime
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -107,3 +108,23 @@ class Category2(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    store = models.ForeignKey(Store,
+                              on_delete=models.CASCADE,
+                              related_name="comment",
+                              verbose_name="نام کالا ", 
+                              null=True, blank=True)
+    name = models.CharField(max_length=50,
+                            verbose_name="نام کاربر ")
+    email = models.EmailField(verbose_name="ایمیل کاربر ",
+                              max_length=50)
+    message = models.TextField()
+    date = models.DateTimeField(auto_now_add=True,
+                                null=True, blank=True)
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.name
