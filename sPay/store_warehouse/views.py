@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Store, Comment
@@ -11,10 +12,14 @@ def first_page(request):
 
 def post_list(request):
     # list = get_object_or_404(Store)
-    stor_list = Store.objects.all()
+    contact_list = Store.objects.all()
+    pagination = Paginator(contact_list, 2)
+    page_number = request.GET.get("page")
+    page_obj = pagination.get_page(page_number)
+
     return render(request,
                   "store_warehouse/post_list.html",
-                  {"list": stor_list})
+                  {"list": page_obj})
 
 
 def post_detail(request, id_num):

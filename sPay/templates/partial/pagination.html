@@ -1,9 +1,36 @@
+
 <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" href="#">Previous</a>
-    <a class="pagination-next" href="#" disabled>Next page</a>
-    <ul class="pagination-list">
-        <li>
-            <a href="#" class="pagination-link <!--is-current -->" aria-label="Goto page 1">2</a>
-        </li>
-    </ul>
+    {% if list.has_other_pages %}
+
+<!--        previous page -->
+        {% if list.has_previous %}
+            <a class="pagination-previous"
+               href="?page={{ list.previous_page_number }}">صفحه قبلی </a>
+        {% endif %}
+
+
+<!--    next page -->
+        {% if list.has_next %}
+            <a class="pagination-next"
+               href="?page={{ list.next_page_number }}">Next page</a>
+        {% else %}
+        {% endif %}
+
+<!--    -->
+     <ul class="pagination-list">
+
+        {% for page in list.paginator.page_range %}
+            <li>
+                <a href="?page={{page}}"
+                   class="pagination-link
+                    {% if list.number == page %}
+                    is-current {% endif %}"
+                    aria-label="Goto page 1"> {{page}}</a>
+            </li>
+        {% endfor %}
+
+     </ul>
+
+
+    {% endif %}
 </nav>
