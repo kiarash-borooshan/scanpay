@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "spatial_services",
     "social_media",
     "ckeditor",
+    "Account",
 ]
 
 MIDDLEWARE = [
