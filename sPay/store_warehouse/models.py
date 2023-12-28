@@ -1,4 +1,4 @@
-from datetime import timezone, datetime
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -44,6 +44,7 @@ class Store(models.Model):
     """ توضیحات محصول """
     description = models.TextField(verbose_name="توضیحات کالا",
                                    blank=True, null=True)
+    # description = RichTextField()
 
     """ لینک ویدئو توضیحات محصول در آپارات، دیدئو، یوتیوب و ...  """
     link = models.URLField(verbose_name=" لینک ویدئو توضیحات محصول در آپارات، دیدئو، یوتیوب و ...  ",
@@ -105,6 +106,9 @@ class Category2(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()
+    
+    class Meta:
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.title
