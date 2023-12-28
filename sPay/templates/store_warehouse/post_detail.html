@@ -15,7 +15,7 @@
 
     <h1 class="title is-1 block">{{ p_d.title | title }}</h1>
     <div class="block"><small>{{ p_d.Category }}</small></div>
-    <p class="block">{{ p_d.description }}</p>
+    <p class="block">{{ p_d.description | safe }}</p>
 <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
     <hr>
     <div>
