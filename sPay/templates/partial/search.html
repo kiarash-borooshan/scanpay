@@ -1,0 +1,15 @@
+
+<div class="column">
+    <div class="panel is-light">
+        <p class="panel-heading ">Search</p>
+		<form method="get" action="{% url 'store_warehouse:search' %}">
+				{% csrf_token %}
+				<div class="blog-search-form">
+					<input name="search" placeholder="Search blog" type="text">
+					<button class="search-btn" type="submit">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+				</div>
+		</form>
+	</div>
+</div>
