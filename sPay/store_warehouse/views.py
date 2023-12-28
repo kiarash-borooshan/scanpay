@@ -65,3 +65,12 @@ def add_post(request):
     return render(request,
                   "store_warehouse_forms/add_post.html",
                   {"form": form})
+
+
+def search(request):
+    if request.method == "GET":
+        q = request.GET.get("search")
+    blog_list = Store.objects.filter(name__icontains=q)
+    return render(request,
+                  "store_warehouse/post_list.html",
+                  {"list": blog_list})
