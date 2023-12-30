@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+
 from .models import Store, Comment
 from .forms import AddPost, CommentForm
 
@@ -21,6 +23,12 @@ def post_list(request):
                   "store_warehouse/post_list.html",
                   {"list": page_obj})
 
+
+# class PostList(ListView):
+#     """ post list class """
+#     model = Store
+#     template_name = "store_warehouse/post_list.html"
+#     context_object_name = "list"
 
 def post_detail(request, id_num):
     p_d = Store.objects.get(id=id_num)
