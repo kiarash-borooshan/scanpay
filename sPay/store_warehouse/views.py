@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Store, Comment
 from .forms import AddPost, CommentForm
@@ -59,6 +59,12 @@ def post_detail(request, id_num):
     return render(request,
                   "store_warehouse/post_detail.html",
                   c)
+
+
+# class PostDetail(DetailView):
+#     model = Store
+#     template_name = "store_warehouse/post_detail.html"
+#     context_object_name = "p_d"
 
 
 def add_post(request):
