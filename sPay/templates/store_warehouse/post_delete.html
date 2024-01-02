@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> حذف کالا </h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <p> آیا با حذف کالا مطمئن هستید؟ </p>
+    <input type="submit" value=" بله ">
+</form>
+{% endblock %}

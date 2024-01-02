@@ -1,8 +1,9 @@
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Store, Comment
 from .forms import AddPost, CommentForm
@@ -93,6 +94,12 @@ class EditPost(UpdateView):
     fields = "__all__"
     template_name = "store_warehouse/post_edit.html"
     context_object_name = "p_d"
+
+
+class DeletePost(DeleteView):
+    model = Store
+    template_name = "store_warehouse/post_delete.html"
+    success_url = reverse_lazy("store_warehouse:post_list")
 
 
 def search(request):

@@ -12,5 +12,6 @@ urlpatterns = [
     path("add_post/", views.add_post, name="add_post"),
     # path("add_post/", views.AddPost.as_view(), name="add_post"),
     path("<int:pk>/edit/", views.EditPost.as_view(), name="post_edit"),
+    path("<int:pk>/DeletePost/", views.DeletePost.as_view(), name="DeletePost"),
     path("search/", views.search, name="search")
 ]
