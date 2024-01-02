@@ -5,24 +5,29 @@
 
 {% block content %}
 <center>
-<div class="column is-6 head">
+    <h1 class="title is-1 block"> مشخصات کالا </h1>
+    <div class="column is-6 head">
 
     {% if p_d.scan_same_QR %}
-        <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
+    <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
     {% else %}
-        <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
+    <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
     {% endif %}
 
-    <h1 class="title is-1 block">{{ p_d.title | title }}</h1>
+    <div class="block"><small>{{ p_d.name | title }}</small></div>
+    <br>
     <div class="block"><small>{{ p_d.Category }}</small></div>
-    <p class="block">{{ p_d.description | safe }}</p>
+    <p class="block">{{ p_d.description | linebreaks | safe }}</p>
 <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
     <hr>
+
 <!--    edit post -->
-    <div>
+    <div class="block">
         <a href="{% url 'store_warehouse:post_edit' p_d.id %}"
            class="button is-light card-item see-more">اصلاح مشخصات کالا </a>
     </div>
+    <hr>
+    <hr>
 <!--    -->
     <div>
         <div class="block ah">
