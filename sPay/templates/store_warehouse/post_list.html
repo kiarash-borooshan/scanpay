@@ -36,7 +36,8 @@
                             <p>{{ l.description | truncatewords:10 | safe}}</p>
                         </div>
                         <div>
-                            <a href="{% url 'store_warehouse:post_detail' l.id %}" class="button is-light card-item see-more">see more</a>
+                            <a href="{{ l.get_absolute_url }}"
+                               class="button is-light card-item see-more">see more</a>
                         </div>
                     </div>
                 </div>

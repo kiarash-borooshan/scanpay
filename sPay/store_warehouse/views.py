@@ -31,8 +31,8 @@ def post_list(request):
 #     template_name = "store_warehouse/post_list.html"
 #     context_object_name = "list"
 
-def post_detail(request, id_num):
-    p_d = Store.objects.get(id=id_num)
+def post_detail(request, pk):
+    p_d = Store.objects.get(id=pk)
     cmnt = Comment.objects.all().filter(store=p_d)
 
     if request.method == "POST":

@@ -1,6 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 
 class Store(models.Model):
@@ -95,6 +96,9 @@ class Store(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("store_warehouse:post_detail", kwargs={"pk": self.pk})
 
 
 class Category2(models.Model):
