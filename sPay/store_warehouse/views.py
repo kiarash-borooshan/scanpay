@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView
 
 from .models import Store, Comment
 from .forms import AddPost, CommentForm
@@ -79,6 +80,12 @@ def add_post(request):
     return render(request,
                   "store_warehouse_forms/add_post.html",
                   {"form": form})
+
+
+# class AddPost(CreateView):
+#     model = Store
+#     template_name = "store_warehouse_forms/add_post.html"
+#     fields = "__all__"
 
 
 def search(request):
