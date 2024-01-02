@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> اصلاح مشخصات کالا </h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="اصلاح">
+</form>
+{% endblock %}

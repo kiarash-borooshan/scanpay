@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .models import Store, Comment
 from .forms import AddPost, CommentForm
@@ -78,7 +78,7 @@ def add_post(request):
         form = AddPost()
 
     return render(request,
-                  "store_warehouse_forms/add_post.html",
+                  "store_warehouse/add_post.html",
                   {"form": form})
 
 
@@ -88,6 +88,13 @@ def add_post(request):
 #     fields = "__all__"
 
 
+class EditPost(UpdateView):
+    model = Store
+    fields = "__all__"
+    template_name = "store_warehouse/post_edit.html"
+    context_object_name = "p_d"
+
+
 def search(request):
     if request.method == "GET":
         q = request.GET.get("search")
@@ -95,3 +102,4 @@ def search(request):
     return render(request,
                   "store_warehouse/post_list.html",
                   {"list": blog_list})
+

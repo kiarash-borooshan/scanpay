@@ -18,6 +18,12 @@
     <p class="block">{{ p_d.description | safe }}</p>
 <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
     <hr>
+<!--    edit post -->
+    <div>
+        <a href="{% url 'store_warehouse:post_edit' p_d.id %}"
+           class="button is-light card-item see-more">اصلاح مشخصات کالا </a>
+    </div>
+<!--    -->
     <div>
         <div class="block ah">
             <div class="author">
