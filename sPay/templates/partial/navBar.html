@@ -16,21 +16,24 @@
 
 
         <div class="navbar-end">
-
-            <a href="#" class="navbar-item">Log out</a>
-            <a href="#" class="navbar-item dashboard">
-                کیارش بروشان
-                <div>
-                    <img src="#" alt="#" class="avatar" />
-                </div>
-                <span class="icon"><i class="fa-solid fa-user"></i></span>
-            </a>
-            <span class="navbar-item has-text-muted">|</span>
-            <a href="#" class="navbar-item is-danger">
-                <span>Write a new post</span>
-            </a>
-            <a href="#" class="navbar-item">Log in</a>
-            <a href="#" class="navbar-item">Sign up</a>
+            {% if user.is_authenticated %}
+            # TODO logout doesn't work
+                <a href="{% url 'logout' %}" class="navbar-item"> خروج </a>
+                <a href="#" class="navbar-item dashboard">
+                    {{ user }}
+                    <div>
+                        <img src="#" alt="#" class="avatar" />
+                    </div>
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                </a>
+                <span class="navbar-item has-text-muted">|</span>
+                <a href="#" class="navbar-item is-danger">
+                    <span>Write a new post</span>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="navbar-item"> ورود </a>
+                <a href="#" class="navbar-item">Sign up</a>
+            {% endif %}
         </div>
     </div>
 </nav>
