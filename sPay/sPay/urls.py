@@ -8,7 +8,7 @@ urlpatterns = [
     path("", include("store_warehouse.url")),
     path("spatial_services/", include("spatial_services.url")),
     path("social_media/", include("social_media.url")),
-    path("account/", include("Account.url")),
+    path("account/", include("django.contrib.auth.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
