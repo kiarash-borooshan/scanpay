@@ -1,7 +1,15 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+</head>
 {% include 'partial/header.html' %}
 {% include 'partial/navBar.html' %}
-
-{% block content %} {% endblock %}
-
+<body>
+  <main>
+    {% block content %} {% endblock %}
+  </main>
+</body>
 {% include 'partial/footer.html' %}
+</html>
