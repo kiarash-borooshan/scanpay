@@ -17,6 +17,7 @@
 
         <div class="navbar-end">
             {% if user.is_authenticated %}
+            {% csrf_token %}
             # TODO logout doesn't work
                 <a href="{% url 'logout' %}" class="navbar-item"> خروج </a>
                 <a href="#" class="navbar-item dashboard">
