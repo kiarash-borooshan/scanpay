@@ -3,13 +3,17 @@
 {% block title %} صفحه ورود {% endblock %}
 
 {% block content %}
-<h1> ورود </h1>
+
+<h1 class="title is-1"> ورود </h1>
 <hr>
 <form method="post">
     {% csrf_token %}
     <div class="block">
         {{ form }}
     </div>
-    <button type="submit"> ورود </button>
+    <div class="block">
+        <button type="submit"> ورود </button>
+    </div>
 </form>
+
 {% endblock %}
