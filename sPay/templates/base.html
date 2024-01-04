@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>{% block title %}{% endblock %}</title>
-</head>
-{% include 'partial/header.html' %}
-{% include 'partial/navBar.html' %}
-<body>
-  <main>
-    {% block content %} {% endblock %}
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+<form method="POST">
+
+  {% include 'partial/header.html' %}
+  {% include 'partial/navBar.html' %}
+  <body>
+    <main>
+      {% block content %} {% endblock %}
+    </main>
+  </body>
+</form>
 {% include 'partial/footer.html' %}
 </html>

@@ -16,10 +16,22 @@
 
 
         <div class="navbar-end">
+            # TODO logout doesn't work
+
             {% if user.is_authenticated %}
             {% csrf_token %}
-            # TODO logout doesn't work
-                <a href="{% url 'logout' %}" class="navbar-item"> خروج </a>
+
+            # logout
+<!--                <form action="{% url 'logout' %}" method="post">-->
+<!--                    {% csrf_token %}-->
+<!--                    <button type="submit" class="dropdown-item">-->
+<!--                        <i class="fas fa-users mr-2"></i> logout-->
+<!--                    </button>-->
+<!--                </form>-->
+
+                <a href="{% url 'Account:logout' %}" class="navbar-item"> خروج </a>
+
+
                 <a href="#" class="navbar-item dashboard">
                     {{user}} سلام
                     <div>
@@ -27,14 +39,22 @@
                     </div>
                     <span class="icon"><i class="fa-solid fa-user"></i></span>
                 </a>
+
                 <span class="navbar-item has-text-muted">|</span>
+
                 <a href="#" class="navbar-item is-danger">
                     <span>Write a new post</span>
                 </a>
+
             {% else %}
+
+            # login and register
+
                 <a href="{% url 'login' %}" class="navbar-item"> ورود </a>
                 <a href="{% url 'Account:register' %}" class="navbar-item"> ثبت‌نام </a>
+
             {% endif %}
+
         </div>
     </div>
 </nav>

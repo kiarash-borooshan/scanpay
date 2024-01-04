@@ -5,6 +5,7 @@ from django.urls import path, include
 
 # TODO logout failed
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("store_warehouse.url")),
@@ -13,6 +14,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/", include("Account.url"))
 ]
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
