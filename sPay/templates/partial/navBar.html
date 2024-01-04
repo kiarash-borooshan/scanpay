@@ -20,7 +20,7 @@
             # TODO logout doesn't work
                 <a href="{% url 'logout' %}" class="navbar-item"> خروج </a>
                 <a href="#" class="navbar-item dashboard">
-                    سلام: {{ user }}
+                    {{user}} سلام
                     <div>
                         <img src="#" alt="#" class="avatar" />
                     </div>
@@ -32,7 +32,7 @@
                 </a>
             {% else %}
                 <a href="{% url 'login' %}" class="navbar-item"> ورود </a>
-                <a href="#" class="navbar-item">Sign up</a>
+                <a href="{% url 'Account:register' %}" class="navbar-item"> ثبت‌نام </a>
             {% endif %}
         </div>
     </div>
