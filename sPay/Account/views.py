@@ -17,3 +17,10 @@ def logout_view(request):
     request.session.flush()
     request.user = AnonymousUser
     return redirect("store_warehouse:post_list")
+
+
+def password_change_done(request):
+    logout(request)
+    request.session.flush()
+    request.user = AnonymousUser
+    return redirect("login")
