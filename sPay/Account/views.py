@@ -1,6 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import AnonymousUser
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -24,3 +25,7 @@ def password_change_done(request):
     request.session.flush()
     request.user = AnonymousUser
     return redirect("login")
+
+
+def pass_reset(request):
+    return redirect("password_reset_complete")
