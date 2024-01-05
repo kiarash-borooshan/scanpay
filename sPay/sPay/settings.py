@@ -146,6 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 """ account redirects """
 LOGIN_REDIRECT_URL = "store_warehouse:dashboard"
 LOGOUT_REDIRECT_URL = "store_warehouse:post_list"
+PASSWORD_CHANGE_DONE_REDIRECT_URL = "store_warehouse:post_list"
 
 """ ckEditor """
 CKEDITOR_CONFIGS = {
