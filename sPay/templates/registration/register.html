@@ -3,18 +3,24 @@
 {% block title %} ثبت‌نام {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-4">
 
-<h1 class="title is-1">ثبت‌نام</h1>
-<hr>
-<form method="post">
-    {% csrf_token %}
-    <div class="block">
-        {{ form }}
-    </div>
-    <div class="block">
-        <button type="submit"> ثبت‌نام</button>
-    </div>
+            <h1 class="title is-1">ثبت‌نام</h1>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                <div class="block">
+                    {{ form }}
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn btn-success"> ثبت‌نام</button>
+                </div>
+            </form>
 
-</form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

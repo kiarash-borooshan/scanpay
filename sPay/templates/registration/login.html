@@ -4,16 +4,26 @@
 
 {% block content %}
 
-<h1 class="title is-1"> ورود </h1>
-<hr>
-<form method="post">
-    {% csrf_token %}
-    <div class="block">
-        {{ form }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+
+            <h2 class="title is-1"> ورود </h2>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                <div class="block">
+                    {{ form }}
+                </div>
+                <div class="block">
+                    <button type="submit" class="btn btn-success"> ورود </button>
+                </div>
+            </form>
+
+        </div>
     </div>
-    <div class="block">
-        <button type="submit"> ورود </button>
-    </div>
-</form>
+</div>
+
 
 {% endblock %}
