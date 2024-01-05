@@ -13,5 +13,7 @@ urlpatterns = [
     # path("add_post/", views.AddPost.as_view(), name="add_post"),
     path("<int:pk>/edit/", views.EditPost.as_view(), name="post_edit"),
     path("<int:pk>/DeletePost/", views.DeletePost.as_view(), name="DeletePost"),
-    path("search/", views.search, name="search")
+    path("search/", views.search, name="search"),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("dashboard/post_detail/<int:pk>/", views.dashboard_post_detail, name="dashboard_post_detail"),
 ]

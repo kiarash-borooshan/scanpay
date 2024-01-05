@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} جزییات کالا {% endblock %}
+{% block title %} داشبورد جزییات کالا {% endblock %}
 
 
 {% block content %}
@@ -20,6 +20,16 @@
     <p class="block">{{ p_d.description | linebreaks | safe }}</p>
 <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
     <hr>
+
+
+        <div class="field has-addons">
+            <a href="{% url 'store_warehouse:DeletePost' p_d.id %}"
+               class="button is-light  is-danger is-small">حذف مشخصات کالا </a>
+            <a href="{% url 'store_warehouse:post_edit' p_d.id %}"
+               class="button is-light is-success is-small">اصلاح مشخصات کالا</a>
+<!--            <a href="@" class="button is-light is-warning is-small">see more</a>-->
+<!--            <p class="button is-small is-light is-light">Likes</p>-->
+        </div>
 
     <hr>
 <!--    -->
@@ -45,7 +55,7 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-    </div>
+<!--    </div>-->
     <hr>
     <br>
 

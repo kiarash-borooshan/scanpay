@@ -32,6 +32,28 @@ def post_list(request):
 #     template_name = "store_warehouse/post_list.html"
 #     context_object_name = "list"
 
+
+def dashboard(request):
+    """ dashboard """
+    """ داشبورد مشابه پست لیست است. قابلیت ویرایش و حذف  """
+    # list = get_object_or_404(Store)
+    contact_list = Store.objects.all()
+    pagination = Paginator(contact_list, 2)
+    page_number = request.GET.get("page")
+    page_obj = pagination.get_page(page_number)
+
+    return render(request,
+                  "store_warehouse/dashboard.html",
+                  {"list": page_obj})
+
+
+# class Dashboard(ListView):
+#     """ داشبورد مشابه پست لیست است. اما پست لیست قابلیت ویرایش و حذف ندارد """
+#     model = Store
+#     template_name = "store_warehouse/dashboard.html"
+#     context_object_name = "list"
+
+
 def post_detail(request, pk):
     p_d = Store.objects.get(id=pk)
     cmnt = Comment.objects.all().filter(store=p_d)
@@ -67,6 +89,39 @@ def post_detail(request, pk):
 #     model = Store
 #     template_name = "store_warehouse/post_detail.html"
 #     context_object_name = "p_d"
+
+
+def dashboard_post_detail(request, pk):
+    """ """
+    p_d = Store.objects.get(id=pk)
+    cmnt = Comment.objects.all().filter(store=p_d)
+
+    if request.method == "POST":
+        cmnt_frm = CommentForm(data=request.POST)
+        if cmnt_frm.is_valid():
+            cd = cmnt_frm.cleaned_data
+            new_name = cd["name"]
+            new_email = cd["email"]
+            new_message = cd["message"]
+
+            new_comment = Comment(name=new_name,
+                                  email=new_email,
+                                  message=new_message,
+                                  store=p_d)
+            new_comment.save()
+
+    else:
+        cmnt_frm = CommentForm()
+
+    c = {
+        "p_d": p_d,
+        "comment": cmnt,
+    }
+
+    return render(request,
+                  "store_warehouse/dashboard_post_detail.html",
+                  c)
+
 
 
 def add_post(request):
