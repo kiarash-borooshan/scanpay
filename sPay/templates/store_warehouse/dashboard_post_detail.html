@@ -15,6 +15,7 @@
     {% endif %}
 
     <div class="block"><small>{{ p_d.name | title }}</small></div>
+    <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
     <br>
     <div class="block"><small>{{ p_d.Category }}</small></div>
     <p class="block">{{ p_d.description | linebreaks | safe }}</p>

@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.paginator import Paginator
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
@@ -91,6 +90,7 @@ def dashboard(request):
                   "store_warehouse/dashboard.html",
                   {"list": page_obj})
 
+
 @login_required()
 def dashboard_post_detail(request, pk):
     """ """
@@ -139,6 +139,8 @@ def dashboard_post_detail(request, pk):
 
 
 class AddPost(LoginRequiredMixin, CreateView):
+    # TODO: user and slug must exclude and EditPost
+    # TODO: UserPassesTestMixin failed for rest
     model = Store
     template_name = "store_warehouse/add_post.html"
     fields = ("scan_same_QR", "scan_QR", "image_front", "image_behind",
@@ -150,14 +152,24 @@ class AddPost(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    # def test_func(self):
+    #     obj = self.get_object()
+    #     return obj.user == self.request.user
+
 
 class EditPost(LoginRequiredMixin, UpdateView):
-    # TODO: user and slug must exclude
+
     model = Store
-    fields = "__all__"
+    fields = ("scan_same_QR", "scan_QR", "image_front", "image_behind",
+              "name", "code", "description", "link", "age", "box",
+              "variety", "category", "category2", "price")
     # exclude = ("user", "slug")
     template_name = "store_warehouse/post_edit.html"
     context_object_name = "p_d"
+
+    # def test_func(self):
+    #     obj = self.get_object()
+    #     return obj.user == self.request.user
 
 
 class DeletePost(LoginRequiredMixin, DeleteView):
@@ -173,4 +185,3 @@ def search(request):
     return render(request,
                   "store_warehouse/post_list.html",
                   {"list": blog_list})
-
