@@ -3,11 +3,17 @@
 {% block title %} حذف کالا {% endblock %}
 
 {% block content %}
-<h1> حذف کالا </h1>
-<hr>
-<form method="post">
-    {% csrf_token %}
-    <p> آیا با حذف کالا مطمئن هستید؟ </p>
-    <input type="submit" value=" بله ">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h1> حذف کالا </h1>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                <p> آیا با حذف کالا {{p_d.title }} موافق هستید؟ </p>
+                <input type="submit" value=" بله ">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

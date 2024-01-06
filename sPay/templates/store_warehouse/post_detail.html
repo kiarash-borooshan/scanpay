@@ -4,50 +4,26 @@
 
 
 {% block content %}
-<center>
-    <h1 class="title is-1 block"> مشخصات کالا </h1>
-    <div class="column is-6 head">
 
-    {% if p_d.scan_same_QR %}
-    <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
-    {% else %}
-    <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
-    {% endif %}
+<h1 class="title is-1 block"> مشخصات کالا </h1>
+<div class="column is-6 head">
 
-    <div class="block"><small>{{ p_d.name | title }}</small></div>
-    <br>
-    <div class="block"><small>{{ p_d.Category }}</small></div>
-    <p class="block">{{ p_d.description | linebreaks | safe }}</p>
+{% if p_d.scan_same_QR %}
+<div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
+{% else %}
+<div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
+{% endif %}
+
+<div class="block"><small>{{ p_d.name | title }}</small></div>
+<br>
+<div class="block"><small>{{ p_d.Category }}</small></div>
+<p class="block">{{ p_d.description | linebreaks | safe }}</p>
 <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
-    <hr>
+<hr>
 
-    <hr>
-<!--    -->
-<!--    <div>-->
-<!--        <div class="block ah">-->
-<!--            <div class="author">-->
-<!--                <img src="./static/img.jpg" class="author-img" alt="">-->
-<!--                <div style="font-size:35px; margin-right:30px"><span class="icon"><i-->
-<!--                            class="fa-solid fa-user"></i></span> </div>-->
-<!--                <h4 class="title is-4"><a href="#">{{ p_d.user.first_name | capfirst}} {{ p_d.user.last_name | capfirst}} </a></h4>-->
-<!--            </div>-->
-<!--            <div class="block like">-->
-<!--                <form class="like-btn" method="post" data-url="url" id="likeForm">-->
-<!--                    <input type="hidden" name="post_id" value="post_id" />-->
-<!--                    <button type="submit" class="button"><span id="likeBtn" ><i class="fa-solid fa-heart"></i></span></button>-->
-<!--                    <p id="likes">31</p>-->
-<!--                </form>-->
-<!--                <div>-->
-<!--                    <button type="button" class="button"><span class="icon"><i class="fa-solid fa-share"></i></span></button>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <button type="button" class="button"><span class="icon"><i class="fa-solid fa-copy"></i></span></button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-    </div>
-    <hr>
-    <br>
+</div>
+<hr>
+<br>
 
 <!--    comment -->
     <div class="blog-comment-box">

@@ -10,7 +10,8 @@ class Store(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.SET_NULL,
                              related_name="data_gather_user",
-                             blank=True, null=True)
+                             blank=True, null=True,
+                             verbose_name="کاربر")
 
     """ اسکن QrCode برای محصول مشابه که از قبل اسکن شده و اطلاعات آن وارد شده است."""
     scan_same_QR = models.ImageField(verbose_name="QrCode کالای مشابه",

@@ -14,10 +14,20 @@
     <div class="columns">
         <div class="column is-4">
             <div class="panel is-light">
+
                 <p class="panel-heading">Dashboard Settings</p>
-                <a href="#" class="panel-block">Edit my info</a>
-                <a href="{% url 'password_change' %}" class="panel-block">تغییر رمز عبور </a>
-                <a href="{% url 'password_reset' %}" class="panel-block">ریست رمز عبور </a>
+
+                <a href="{% url 'store_warehouse:add_post' %}"
+                   class="panel-block"> اضافه کردن کالا </a>
+
+                <a href="{% url 'password_change' %}"
+                   class="panel-block">تغییر رمز عبور </a>
+
+                <a href="{% url 'password_reset' %}"
+                   class="panel-block">ریست رمز عبور </a>
+
+                <!--                <a href="#" class="panel-block">Edit my info</a>-->
+
             </div>
         </div>
     </div>
