@@ -2,6 +2,16 @@ from django.contrib import admin
 from .models import Store, Category2, Comment
 
 
+# class CommentInline(admin.StackedInline):
+#     # TODO failed
+#     """ show comment in admin """
+#     model = Comment
+#
+#
+# class StoreAdmin(admin.ModelAdmin):
+#     inlines = [CommentInline]
+
+
 @admin.register(Store)
 class StoreDecore(admin.ModelAdmin):
     list_display = ("name", "code")
@@ -20,4 +30,6 @@ class CategoryDecor(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentDecore(admin.ModelAdmin):
+    # list_display = ("writer", "email")
     list_display = ("name", "email")
+

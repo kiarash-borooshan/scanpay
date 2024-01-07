@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -126,7 +127,11 @@ class Comment(models.Model):
                               verbose_name="نام کالا ", 
                               null=True, blank=True)
     name = models.CharField(max_length=50,
-                            verbose_name="نام کاربر ")
+                            verbose_name="نام کاربر ",
+                            null=True, blank=True)
+    # writer = models.ForeignKey(get_user_model(),
+    #                            on_delete=models.CASCADE,
+    #                            null=True, blank=True)
     email = models.EmailField(verbose_name="ایمیل کاربر ",
                               max_length=50)
     message = models.TextField()
@@ -136,4 +141,7 @@ class Comment(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return self.name
+        return str(self.writer)
+
+    def get_absolute_url(self):
+        return reverse("store_warehouse:post_list", kwargs={"pk": self.pk})

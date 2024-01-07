@@ -5,23 +5,23 @@
 
 {% block content %}
 <center>
-    <h1 class="title is-1 block"> مشخصات کالا </h1>
+<!--    deatail post -->
+    <h2 class="title is-1 block"> مشخصات کالا </h2>
     <div class="column is-6 head">
 
-    {% if p_d.scan_same_QR %}
-    <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
-    {% else %}
-    <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
-    {% endif %}
+        {% if p_d.scan_same_QR %}
+        <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
+        {% else %}
+        <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
+        {% endif %}
 
-    <div class="block"><small>{{ p_d.name | title }}</small></div>
-    <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
-    <br>
-    <div class="block"><small>{{ p_d.Category }}</small></div>
-    <p class="block">{{ p_d.description | linebreaks | safe }}</p>
-<!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
-    <hr>
-
+        <div class="block"><small>{{ p_d.name | title }}</small></div>
+        <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
+        <br>
+        <div class="block"><small>{{ p_d.Category }}</small></div>
+        <p class="block">{{ p_d.description | linebreaks | safe }}</p>
+    <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
+        <hr>
 
         <div class="field has-addons">
             <a href="{% url 'store_warehouse:DeletePost' p_d.id %}"
@@ -31,76 +31,62 @@
 <!--            <a href="@" class="button is-light is-warning is-small">see more</a>-->
 <!--            <p class="button is-small is-light is-light">Likes</p>-->
         </div>
+    </div>
 
     <hr>
-<!--    -->
-<!--    <div>-->
-<!--        <div class="block ah">-->
-<!--            <div class="author">-->
-<!--                <img src="./static/img.jpg" class="author-img" alt="">-->
-<!--                <div style="font-size:35px; margin-right:30px"><span class="icon"><i-->
-<!--                            class="fa-solid fa-user"></i></span> </div>-->
-<!--                <h4 class="title is-4"><a href="#">{{ p_d.user.first_name | capfirst}} {{ p_d.user.last_name | capfirst}} </a></h4>-->
-<!--            </div>-->
-<!--            <div class="block like">-->
-<!--                <form class="like-btn" method="post" data-url="url" id="likeForm">-->
-<!--                    <input type="hidden" name="post_id" value="post_id" />-->
-<!--                    <button type="submit" class="button"><span id="likeBtn" ><i class="fa-solid fa-heart"></i></span></button>-->
-<!--                    <p id="likes">31</p>-->
-<!--                </form>-->
-<!--                <div>-->
-<!--                    <button type="button" class="button"><span class="icon"><i class="fa-solid fa-share"></i></span></button>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <button type="button" class="button"><span class="icon"><i class="fa-solid fa-copy"></i></span></button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
     <hr>
     <br>
 
-<!--    comment -->
-    <div class="blog-comment-box">
+<!--    comment show -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="blog-comment-box">
         <h3> نظرات </h3>
 
         {% for cmnt in comment %}
             <div class="comment-item">
-            <div class="comment-item-left">
-                <img src="images/avt-img.jpg" alt="">
-            </div>
-            <div class="comment-item-right">
-                <div dir="rtl" class="pull-left">
-                    نام کاربر:
-                    {{ cmnt.name }}
-<!--                    <a href="#"></a>-->
+                <div class="comment-item-left">
+                    <img src="images/avt-img.jpg" alt="">
                 </div>
-                <div class="pull-right">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    تاریخ : <span>{{ cmnt.date | timesince}}</span>
-                </div>
-                <div dir="rtl" class="des-l">
-                    <p>{{ cmnt.message }}</p>
-                </div>
+                <div class="comment-item-right">
+                    <div dir="rtl" class="pull-left">
+                        نام کاربر:
+                        {{ cmnt.name }}
+    <!--                    <a href="#"></a>-->
+                    </div>
+                    <div class="pull-right">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        تاریخ : <span>{{ cmnt.date | timesince}}</span>
+                    </div>
+                    <div dir="rtl" class="des-l">
+                        <p>{{ cmnt.message }}</p>
+                    </div>
 
-<!--                پاسخ به نظر -->
-<!--                <a href="#" class="right-btn-re">-->
-<!--                    <i class="fa fa-reply" aria-hidden="true"></i>-->
-<!--                    Reply-->
-<!--                </a>-->
-                <br>
+    <!--                پاسخ به نظر -->
+    <!--                <a href="#" class="right-btn-re">-->
+    <!--                    <i class="fa fa-reply" aria-hidden="true"></i>-->
+    <!--                    Reply-->
+    <!--                </a>-->
+                    <br>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
             </div>
         </div>
-        {% endfor %}
+    </div>
 
         <hr>
         <br>
 
-<!--        comment form -->
-        <div class="comment-respond-box">
+ <!--        comment form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="comment-respond-box">
 
             <h3>نظرات خود را بنویسید </h3>
-            # TODO بعد از ثبت نظر اتوماتیک رفرش شده و تکرار نشود
             <br>
 
 <!--            نام کاربر -->
@@ -142,12 +128,13 @@
 
 <!--                    ثبت نظر کاربر -->
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <button class="btn btn-submit">ثبت نظر </button>
+                        <button class="btn btn-primary">ثبت نظر </button>
                     </div>
                 </form>
             </div>
         </div>
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}
 </center>
