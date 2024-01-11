@@ -38,4 +38,4 @@ class CommentDecore(admin.ModelAdmin):
 # class CommentDecore(admin.ModelAdmin):
 #     # list_display = ("writer", "email")
 #     list_display = ("user", "product")
-
+#

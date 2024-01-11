@@ -5,37 +5,75 @@
 
 {% block content %}
 <center>
+    <hr>
+    <br>
 <!--    deatail post -->
+
     <h2 class="title is-1 block"> مشخصات کالا </h2>
-    <div class="column is-6 head">
+    <div class="container">
+        <div class="card product_data">
 
-        {% if p_d.scan_same_QR %}
-        <div class="image block"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
-        {% else %}
-        <div class="image block"><img src="{% static 'css/no image.png' %}" alt="#"></div>
-        {% endif %}
+            <div class="card-body">
+                <h3 class="card-title"> {{p_d.title}}</h3>
 
-        <div class="block"><small>{{ p_d.name | title }}</small></div>
-        <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
-        <br>
-        <div class="block"><small>{{ p_d.Category }}</small></div>
-        <p class="block">{{ p_d.description | linebreaks | safe }}</p>
-    <!--    <div class="block">Tags : <small>tags 1, tag 2, ...</small></div>-->
-        <hr>
+<!--                image -->
+                <div class="row">
+                    {% if p_d.scan_same_QR %}
+                        <div class="col-lg-5 col-md-5 col-sm-6"><img src="{{ p_d.scan_same_QR.url }}" alt="#"></div>
+                    {% else %}
+                        <div class="col-lg-5 col-md-5 col-sm-6"><img src="{% static 'css/no image.png' %}" alt="#"></div>
+                    {% endif %}
+                </div>
 
-        <div class="field has-addons">
-            <a href="{% url 'store_warehouse:DeletePost' p_d.id %}"
-               class="button is-light  is-danger is-small">حذف مشخصات کالا </a>
-            <a href="{% url 'store_warehouse:post_edit' p_d.id %}"
-               class="button is-light is-success is-small">اصلاح مشخصات کالا</a>
+<!--                detail -->
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ p_d.id }}" class="prodt_id">
+                    <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
+                    <br>
 
-            <button type="button" class="addToCartBtn btn btn-primary btn-rounded">Add to cart</button>
+                    <div class="block"><small>{{ p_d.username | capfirst }}</small></div>
+                    <br>
 
-<!--            <a href="@" class="button is-light is-warning is-small">see more</a>-->
-<!--            <p class="button is-small is-light is-light">Likes</p>-->
+                    <div class="block"><small>{{ p_d.Category }}</small></div>
+                    <br>
+
+                    <div class="block">
+                         توضیحات ویدئویی
+                        <br>
+                        <a href="{{p_d.link}}">{{p_d.link}}</a>
+                    </div>
+                    <br>
+
+                    <h4 class="box-title mt-1"> توضیحات کالا </h4>
+                    <p class="block">{{ p_d.description | linebreaks | safe }}</p>
+                    <br>
+
+                    <h2 class="mt-5">
+                        قیمت
+                        <br>
+                        <small class="text-success"> هزار تومان {{ p_d.price }}</small>
+                    </h2>
+
+                    <hr>
+
+                    <div class="field has-addons">
+                        <a href="{% url 'store_warehouse:DeletePost' p_d.id %}"
+                           class="button is-light  is-danger is-small">حذف مشخصات کالا </a>
+                        <a href="{% url 'store_warehouse:post_edit' p_d.id %}"
+                           class="button is-light is-success is-small">اصلاح مشخصات کالا</a>
+                    </div>
+                    <br>
+
+                    <div>
+                        <button type="button" class="addToCartBtn btn btn-primary btn-rounded"> سبد خرید </button>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </div>
-
     <hr>
     <hr>
     <br>
