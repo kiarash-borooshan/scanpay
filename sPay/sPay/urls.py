@@ -13,6 +13,7 @@ urlpatterns = [
     path("", include("store_warehouse.url")),
     path("spatial_services/", include("spatial_services.url")),
     path("social_media/", include("social_media.url")),
+    path("git&blog/", include("gitAndBlog.url")),
 ]
 
 if settings.DEBUG:

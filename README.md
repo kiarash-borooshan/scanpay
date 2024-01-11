@@ -65,6 +65,7 @@ https://github.com/kiarash-borooshan/scanpay/blob/73eafec6e3dbd6c99f409471933dd8
 -  ثبت جزیئات برای کالاهای جدید
 -  اضافه کردن به سبد کالا
 -  انتخاب نوع پرداخت اعم از کارت‌خوان، کارت به کارت، رمزارز، تهاتر و ...
+- در صورت نیاز به پرداخت کارت به کارت، ساخت یک کیوآرکد روی موبایل فروشنده و اسکن آن توسط مشتری و ارسال مشتری به درگاه بانک 
 -  امکان ارسال فاکتور توسط پیامک
 -  امکان نسیه، مرجوعی، تعویض و ...
 -  در صورت امکان ایجاد پنل کاربری برای مشاغل خانگی 
@@ -111,3 +112,6 @@ Mohammad Kazemi:
 
 https://www.dideo.tv/v/yt/firstVideoPlaylistKey/%D8%AA%D9%85%D8%A7%D8%B4%D8%A7%DB%8C-%D9%88%DB%8C%D8%AF%D8%A6%D9%88-%D8%A7%D8%B2-%D8%AF%DB%8C%D8%AF%D8%A6%D9%88-watch-video-from-dideo?list=PLSccONlqbvweEiAvuU0ELKNs1atxxaRZ4
 <br>
+
+milad_khademm
+https://www.youtube.com/@milad_khademm

@@ -33,3 +33,9 @@ class CommentDecore(admin.ModelAdmin):
     # list_display = ("writer", "email")
     list_display = ("name", "email")
 
+
+# @admin.register(Cart)
+# class CommentDecore(admin.ModelAdmin):
+#     # list_display = ("writer", "email")
+#     list_display = ("user", "product")
+
