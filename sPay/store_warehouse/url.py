@@ -16,4 +16,5 @@ urlpatterns = [
     path("search/", views.search, name="search"),
     path("dashboard/", views.dashboard, name="dashboard"),
     path("dashboard/post_detail/<int:pk>/", views.dashboard_post_detail, name="dashboard_post_detail"),
+    path()
 ]
