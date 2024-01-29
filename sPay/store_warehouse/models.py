@@ -149,8 +149,8 @@ class Comment(models.Model):
 
 
 class Cart(models.Model):
-    user = models.ForeignKey("User",
-                             on_delete=models.CASCADE)
+    # user = models.ForeignKey("User",
+    #                          on_delete=models.CASCADE)
     product = models.ForeignKey("Store",
                                 on_delete=models.CASCADE)
     quantity = models.IntegerField(verbose_name="تعداد",
