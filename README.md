@@ -80,6 +80,7 @@ https://github.com/kiarash-borooshan/scanpay/blob/73eafec6e3dbd6c99f409471933dd8
 - توضیحات تکمیلی به زبان ساده درباره چرائی نیاز به خرد جمعی در پردازش تصاویر «ماهواره‌ای-پهپادی» در یک فایل ویدئوئی ۵۹ دقیقه‌ای در لینک زیر ارائه شده است.
 - (https://www.aparat.com/v/lKy6j )
 - و همچنین در مقاله زیر 
+- (https://doi.org/10.22061/jrsgr.2023.2020)
 - (https://jrsgr.sru.ac.ir/article_2020.html)
 - 
 
