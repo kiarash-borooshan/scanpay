@@ -14,6 +14,11 @@ def first_page(request):
                   "store_warehouse/first_page.html")
 
 
+def guide(request):
+    return render(request,
+                  "store_warehouse/guide.html")
+
+
 def post_list(request):
     # list = get_object_or_404(Store)
     contact_list = Store.objects.all()

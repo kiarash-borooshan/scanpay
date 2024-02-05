@@ -5,6 +5,7 @@ app_name = "store_warehouse"
 
 urlpatterns = [
     path("", views.first_page, name="first_page"),
+    path("guide", views.guide, name="guide"),
     path("post_list/", views.post_list, name="post_list"),
     # path("post_list/", views.PostList.as_view(), name="post_list"),
     path("post_detail/<int:pk>/", views.post_detail, name="post_detail"),
