@@ -192,6 +192,7 @@ def search(request):
                   {"list": blog_list})
 
 
-def add_to_cart(request):
+def cart(request):
 
-    return redirect("/")
+    return render(request,
+                  "store_warehouse/cart.html")

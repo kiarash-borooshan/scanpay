@@ -1,75 +1,79 @@
-<nav class="navbar is-light" role="navigation">
+{% load static %}
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-darkme">
+  <div class="container-fluid">
 
-    <div class="navbar-menu">
+<!--    <a class="navbar-brand" href="#">حامی کسب‌و‌کارهای غیرمجازی kiapay</a>-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="navbar-start">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <a href="{% url 'store_warehouse:first_page' %}" class="navbar-item p-2">خانه</a>
-            <a style="color: red" href="{% url 'store_warehouse:guide' %}" class="navbar-item p-2">راهنما</a>
-            <a href="{% url 'store_warehouse:post_list' %}" class="navbar-item p-2"> نمایش پست‌ها </a>
-            <a href="{% url 'spatial_services:spatial_service' %}" class="navbar-item p-2"> سرویس‌های مکان‌مبنا </a>
-            <a href="{% url 'social_media:video_call' %}" class="navbar-item p-2">پیام‌رسان ویدئوئی </a>
-            <a href="{% url 'gitAndBlog:git_blog' %}" class="navbar-item p-2">Github and blog </a>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'store_warehouse:first_page' %}">خانه</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: red" aria-current="page" href="{% url 'store_warehouse:guide' %}">راهنما</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'store_warehouse:post_list' %}">نمایش پست‌ها</a>
+        </li>
 
+<!--        dropdown-->
+        <div class="dropdown">
+          <button class="dropbtn">برنامه‌های آتی</button>
+          <div class="dropdown-content">
+            <a href="{% url 'social_media:video_call' %}">پیام‌رسان ویدئوئی</a>
+            <a href="{% url 'spatial_services:spatial_service' %}">سرویس‌های مکان‌مبنا</a>
+            <a href="{% url 'gitAndBlog:git_blog' %}">Github and blog</a>
+          </div>
         </div>
 
-        <div class="navbar-mid navbar-brand">
-            <!--    <div class="navbar-brand">-->
-<!--        <p class="navbar-item title is-3"><span class="icon"><i class="fa-solid "></i></span></p>-->
+      </ul>
 
-<!--    </div>-->
-            <p class="navbar-item title is-3 ">
-                <span class="icon">
-                    <i class="fa-solid">
-                        <h5>
-                              انباداری خرده‌فروشی
-                            <br>
-                            حامی کسب‌و‌کارهای غیر مجازی
-                        </h5>
-                    </i>
-                </span>
-            </p>
+<!--      logo -->
+      <p class="navbar-item title is-3 ">
+        <span class="icon">
+            <i class="fa-solid">
+                <h5>
+                   حامی کسب‌و‌کارهای غیرمجازی
+                </h5>
+            </i>
+        </span>
+    </p>
 
-        </div>
-
-
-        <div class="navbar-end">
-
-            {% if user.is_authenticated %}
-            {% csrf_token %}
-
-<!--            # logout-->
-                <p><a href="{% url 'Account:logout' %}"
-                      class="navbar-item"> خروج </a></p>
-
-
-                <a href="#" class="navbar-item dashboard">
-                    {{user}} سلام
-                    <div>
-                        <img src="#" alt="#" class="avatar" />
-                    </div>
-                    <span class="icon"><i class="fa-solid fa-user"></i></span>
-                </a>
-
-                <a href="{% url 'store_warehouse:dashboard' %}" class="navbar-item is-danger">
-                    <span> پنل داشبورد </span>
-                </a>
-
-                <span class="navbar-item has-text-muted">|</span>
-
-                <a href="#" class="navbar-item is-danger">
-                    <span>Write a new post</span>
-                </a>
-
-            {% else %}
-
-<!--            # login and register-->
-                <a href="{% url 'login' %}" class="navbar-item"> ورود </a>
-                <a href="{% url 'Account:register' %}" class="navbar-item"> ثبت‌نام </a>
-
-            {% endif %}
-
-        </div>
     </div>
+
+<!--    authentication -->
+    <div class="form-inline my-2 my-lg-2-0">
+      {% if user.is_authenticated %}
+          {% csrf_token %}
+          <p>
+          {{user}} سلام
+          </p>
+          <div>
+              <img src="#" alt="" class="avatar" />
+          </div>
+
+          <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-success"> پنل داشبورد </a>
+          <span class="navbar-item has-text-muted">|</span>
+
+          <a href="{% url 'Account:logout' %}" class="btn btn-success"> خروج </a>
+          <span class="navbar-item has-text-muted">|</span>
+
+          <a href="{% url 'store_warehouse:cart' %}">
+            <img src="{% static 'images/cart.png' %}" alt="cart" id="cart-icon">
+          </a>
+          <p id="cart-total">0</p>
+
+      {% else %}
+          <a href="{% url 'login' %}" class="btn btn-success"> ورود </a> |
+          <a href="{% url 'Account:register' %}" class="btn btn-success"> ثبت‌نام </a>
+
+      {% endif %}
+    </div>
+
+  </div>
 </nav>
