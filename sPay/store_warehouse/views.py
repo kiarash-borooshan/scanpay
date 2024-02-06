@@ -195,4 +195,9 @@ def search(request):
 def cart(request):
 
     return render(request,
-                  "store_warehouse/cart.html")
+                  "cart/cart.html")
+
+
+def checkout(request):
+    return render(request,
+                  "cart/checkout.html")

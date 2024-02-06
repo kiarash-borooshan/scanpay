@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} cart {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-outline-dark"> ادامه خرید &#x2190</a>
+            <br><br>
+
+            <table class="table">
+                <tr>
+                    <th><h5> تعداد: <strong> 3 </strong></h5></th>
+                    <th><h5> مجموع: <strong> ۴۲ ﷼ </strong></h5></th>
+                    <th><a href="{% url 'store_warehouse:checkout' %}" class="btn btn-success" style= "float:center; margin:5;"> پرداخت </a>  </th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2;"></div>
+                <div style="flex:2;"><strong> تعداد: </strong></div>
+                <div style="flex:1;"><strong> فی </strong></div>
+                <div style="flex:1;"><strong> quantity </strong></div>
+                <div style="flex:1;"><strong> مجموع </strong></div>
+            </div>
+
+            <div class="cart-row">
+                <div style="flex:2;"><img src="{% static 'images/no image.png' %}" alt="" class="row-image"></div>
+                <div style="flex:2;"><p> محصول۱ </p></div>
+                <div style="flex:1;"><p> فی ﷼</p></div>
+                <div style="flex:1;"><p class="quantity"> 2 </p></div>
+                <div style="flex:1;"><p> ۳۰۰ ﷼ </p></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

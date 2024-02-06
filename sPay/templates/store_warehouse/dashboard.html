@@ -36,7 +36,8 @@
                 </div>
 
                 <hr>
-                <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>
+<!--                <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>-->
+                <a href="{% url 'store_warehouse:cart' %}" class="btn btn-outline-success">ارسال به کارت </a>
                 <a href="{% url 'store_warehouse:dashboard_post_detail' l.id %}" class="btn btn-outline-success"> جزییات کالا </a>
                 <h4 style="display:inline-block; float:right">20 $</h4>
             </div>
