@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+{% block title %} لیست کالاها {% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <br><br>
+        <div class="columns">
+        <div class="column is-8 is-light">
+            {% for l in list %}
+            <div class="card card-display">
+                <div class="card-image image imagesize">
+<!--                        image -->
+                    {% if l.scan_same_QR %}
+                        <img src="{{l.scan_same_QR.url}}" alt="Image" style="height: 16rem;">
+                    {% else %}
+                        <img src="{% static 'css/no image.png' %}" alt="Image" style="height: 16rem;">
+                    {% endif %}
+                </div>
+                <div class="card-top">
+                    <div class="card-content">
+                        <h3 class="title is-3">{{ l.name | title }}</h3>
+                        <div class="subtitle is-6 is-light">
+                            <span class="icon"><i class="fa-solid fa-user"></i></span>
+                            <span>{{ l.user.first_name }} {{ l.user.last_name }}</span>
+                            <span>{{ l.user }}</span>
+                            <span> | </span>
+                            <span>{{ l.updated | timesince }}  ago </span>
+                        </div>
+                        <div class="text content">
+                            <p>{{ l.description | truncatewords:10 | safe}}</p>
+                        </div>
+                        <div>
+                            <a href="{{ l.get_absolute_url }}"
+                               class="button is-light card-item see-more">see more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- pagination -->
+            <br><br>
+            <div>
+                {% include 'partial/pagination.html' %}
+            </div>
+        </div>
+<!--            category -->
+        {% include 'partial/category.html' %}
+
+<!--            search -->
+        {% include 'partial/search.html' %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
