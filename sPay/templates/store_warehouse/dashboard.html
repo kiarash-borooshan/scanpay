@@ -37,7 +37,7 @@
 
                 <hr>
                 <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>
-                <a href="{{ l.get_absolute_url }}" class="btn btn-outline-success"> جزییات کالا </a>
+                <a href="{% url 'store_warehouse:dashboard_post_detail' l.id %}" class="btn btn-outline-success"> جزییات کالا </a>
                 <h4 style="display:inline-block; float:right">20 $</h4>
             </div>
         {% endfor %}
@@ -49,26 +49,25 @@
 
     </div>
 
+    <div class="panel is-light">
 
-            <div class="panel is-light">
+        <p dir="rtl" class="panel-heading"> تنظیمات داشبورد</p>
 
-                <p dir="rtl" class="panel-heading"> تنظیمات داشبورد</p>
+        <a dir="rtl" href="{% url 'store_warehouse:add_post' %}"
+           class="panel-block"> اضافه کردن کالا </a>
 
-                <a dir="rtl" href="{% url 'store_warehouse:add_post' %}"
-                   class="panel-block"> اضافه کردن کالا </a>
+        <a dir="rtl" href="{% url 'password_change' %}"
+           class="panel-block">تغییر رمز عبور </a>
 
-                <a dir="rtl" href="{% url 'password_change' %}"
-                   class="panel-block">تغییر رمز عبور </a>
+        <a dir="rtl" href="{% url 'password_reset' %}"
+           class="panel-block">ریست رمز عبور </a>
 
-                <a dir="rtl" href="{% url 'password_reset' %}"
-                   class="panel-block">ریست رمز عبور </a>
+        <!--                <a href="#" class="panel-block">Edit my info</a>-->
 
-                <!--                <a href="#" class="panel-block">Edit my info</a>-->
-
-            {% include 'partial/category.html' %}
-                <!--            search -->
-            {% include 'partial/search.html' %}
-        </div>
+        {% include 'partial/category.html' %}
+        <!--            search -->
+        {% include 'partial/search.html' %}
+    </div>
 
 </div>
 {% endblock %}
