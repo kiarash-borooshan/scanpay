@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Store, Comment
+from .models import Store, Comment, Order
 from .forms import AddPostForm, CommentForm
 
 
@@ -196,9 +196,20 @@ def search(request):
 
 @login_required()
 def cart(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer,
+                                                     complete=False)
+        items = order.orderitem_set.all()
+
+    else:
+        items = []
+        order = []
 
     return render(request,
-                  "cart/cart.html")
+                  "cart/cart.html",
+                  {"items": items,
+                   "order": order})
 
 
 @login_required()

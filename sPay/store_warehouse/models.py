@@ -182,6 +182,19 @@ class Order(models.Model):
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100,
                                       null=True, blank=True)
+    objects = models.Manager()
+
+    @property
+    def get_cart_total(self):
+        order_items = self.orderitem_set.all()
+        total = sum(item.get_total for item in order_items)
+        return total
+
+    @property
+    def get_cart_items(self):
+        order_items = self.orderitem_set.all()
+        total = sum(item.quantity for item in order_items)
+        return total
 
     def __str__(self):
         return str(self.pk)
@@ -197,6 +210,11 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, 
                                    null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
 
     def __str__(self):
         return str(self.pk)
