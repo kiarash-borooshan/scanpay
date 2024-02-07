@@ -19,5 +19,5 @@ urlpatterns = [
     path("dashboard/post_detail/<int:pk>/", views.dashboard_post_detail, name="dashboard_post_detail"),
     path("cart/", views.cart, name="cart"),
     path("credit/", views.credit, name="credit"),
-    # path()
+    path("update_item/", views.update_item, name="update_item")
 ]
