@@ -1,40 +1,43 @@
 
 {% extends 'base.html' %}
 {% load static %}
+{% block title %} نمایش پست‌ها {% endblock %}
 
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-4">
-        {% for l in list %}
-            {% if l.scan_same_QR %}
-                <img src="{{ l.scan_same_QR.url}}" alt="simple picture" class="thumbnail">
-            {% else %}
-                <img src="{% static 'images/no image.png' %}" alt="simple picture" class="thumbnail">
-            {% endif %}
+    {% for l in list %}
+        <div class="col-lg-4">
+                {% if l.image_front %}
+                    <img src="{{ l.image_front.url}}" alt="simple picture" class="thumbnail">
+                {% else %}
+                    <img src="{% static 'images/no image.png' %}" alt="simple picture" class="thumbnail">
+                {% endif %}
 
-            <div class="box-element product">
-                <span>  {{ l.updated | timesince }}   تاریخ انتشار</span>
-                <h6 style="display:inline-block; float:right"><strong> {{ l.name | title }} </strong></h6>
-                <br><br>
+                <div class="box-element product">
+                    <span>  {{ l.updated | timesince }}   تاریخ انتشار</span>
+                    <h6 style="display:inline-block; float:right"><strong> {{ l.name | title }} </strong></h6>
+                    <br><br>
 
-                <div class="text content">
-                    <p>{{ l.description | truncatewords:10 | safe}}</p>
+                    <div class="text content">
+                        <p>{{ l.description | truncatewords:10 | safe}}</p>
+                    </div>
+
+                    <hr>
+    <!--                <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>-->
+                    <a href="{{ l.get_absolute_url }}" class="btn btn-outline-success"> جزییات کالا </a>
+                    <h4 style="display:inline-block; float:right"> {{ l.price }} هزار تومان</h4>
                 </div>
 
-                <hr>
-<!--                <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>-->
-                <a href="{{ l.get_absolute_url }}" class="btn btn-outline-success"> جزییات کالا </a>
-                <h4 style="display:inline-block; float:right">20 $</h4>
-            </div>
-        {% endfor %}
-        <hr>
-        <br>
-        <div>
-            {% include 'partial/pagination.html' %}
         </div>
 
-    </div>
+            {% endfor %}
+            <hr>
+            <br>
+            <div>
+                {% include 'partial/pagination.html' %}
+            </div>
+
 <!--        category-->
         <div>
             {% include 'partial/category.html' %}

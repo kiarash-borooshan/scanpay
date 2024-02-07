@@ -50,15 +50,26 @@
     <div class="form-inline my-2 my-lg-2-0">
       {% if user.is_authenticated %}
           {% csrf_token %}
-          <p>
-          {{user}} سلام
-          </p>
+
+        <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-success"> {{user}} سلام </a>
+          <span class="navbar-item has-text-muted">|</span>
           <div>
               <img src="#" alt="" class="avatar" />
           </div>
 
-          <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-success"> پنل داشبورد </a>
-          <span class="navbar-item has-text-muted">|</span>
+        <div class="dropdown">
+          <button class="dropbtn btn-success"> تنظیمات داشبورد </button>
+          <div class="dropdown-content">
+              <p dir="rtl" class="panel-heading"> تنظیمات داشبورد</p>
+              <a dir="rtl" href="{% url 'store_warehouse:add_post' %}"
+               class="panel-block"> اضافه کردن کالا </a>
+              <a dir="rtl" href="{% url 'password_change' %}"
+               class="panel-block">تغییر رمز عبور </a>
+              <a dir="rtl" href="{% url 'password_reset' %}"
+               class="panel-block">ریست رمز عبور </a>
+          </div>
+        </div>
+        <span class="navbar-item has-text-muted">|</span>
 
           <a href="{% url 'Account:logout' %}" class="btn btn-success"> خروج </a>
           <span class="navbar-item has-text-muted">|</span>

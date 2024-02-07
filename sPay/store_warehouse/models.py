@@ -28,15 +28,15 @@ class Store(models.Model):
                              blank=True, null=True,
                              verbose_name="کاربر")
 
-    """ اسکن QrCode برای محصول مشابه که از قبل اسکن شده و اطلاعات آن وارد شده است."""
-    scan_same_QR = models.ImageField(verbose_name="QrCode اسکن",
-                                     upload_to="QR-Code/",
-                                     blank=True, null=True)
+    # """ اسکن QrCode برای محصول مشابه که از قبل اسکن شده و اطلاعات آن وارد شده است."""
+    # scan_same_QR = models.ImageField(verbose_name="QrCode اسکن",
+    #                                  upload_to="QR-Code/",
+    #                                  blank=True, null=True)
 
-    # """ اسکن QrCode برای وارد کردن اطلاعات محصول """
-    # scan_QR = models.ImageField(verbose_name="QRCode خام",
-    #                             upload_to="QR-Code/",
-    #                             blank=True, null=True)
+    """ اسکن QrCode برای وارد کردن اطلاعات محصول """
+    scan_QR = models.ImageField(verbose_name="QRCode اسکن",
+                                upload_to="QR-Code/",
+                                blank=True, null=True)
 
     """ تصویر جلوی محصول """
     image_front = models.ImageField(verbose_name="تصویر از جلوی کالا",

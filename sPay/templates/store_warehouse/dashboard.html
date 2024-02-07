@@ -6,10 +6,10 @@
 
 {% block content %}
 <div class="row">
+    {% for l in list %}
     <div class="col-lg-4">
-        {% for l in list %}
-            {% if l.scan_same_QR %}
-                <img src="{{ l.scan_same_QR.url}}" alt="simple picture" class="thumbnail">
+            {% if l.image_front %}
+                <img src="{{ l.image_front.url}}" alt="simple picture" class="thumbnail">
             {% else %}
                 <img src="{% static 'images/no image.png' %}" alt="simple picture" class="thumbnail">
             {% endif %}
@@ -39,29 +39,19 @@
 <!--                <button class="btn btn-outline-primary add-btn"> ارسال به کارت </button>-->
                 <a href="{% url 'store_warehouse:cart' %}" class="btn btn-outline-success">ارسال به کارت </a>
                 <a href="{% url 'store_warehouse:dashboard_post_detail' l.id %}" class="btn btn-outline-success"> جزییات کالا </a>
-                <h4 style="display:inline-block; float:right">20 $</h4>
+                <h4 style="display:inline-block; float:right">{{ l.price }} هزار تومان</h4>
             </div>
-        {% endfor %}
+    </div>
+     {% endfor %}
         <hr>
         <br>
         <div>
             {% include 'partial/pagination.html' %}
         </div>
 
-    </div>
-
     <div class="panel is-light">
 
-        <p dir="rtl" class="panel-heading"> تنظیمات داشبورد</p>
 
-        <a dir="rtl" href="{% url 'store_warehouse:add_post' %}"
-           class="panel-block"> اضافه کردن کالا </a>
-
-        <a dir="rtl" href="{% url 'password_change' %}"
-           class="panel-block">تغییر رمز عبور </a>
-
-        <a dir="rtl" href="{% url 'password_reset' %}"
-           class="panel-block">ریست رمز عبور </a>
 
         <!--                <a href="#" class="panel-block">Edit my info</a>-->
 

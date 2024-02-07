@@ -22,7 +22,7 @@ def guide(request):
 def post_list(request):
     # list = get_object_or_404(Store)
     contact_list = Store.objects.all()
-    pagination = Paginator(contact_list, 2)
+    pagination = Paginator(contact_list, 3)
     page_number = request.GET.get("page")
     page_obj = pagination.get_page(page_number)
 
@@ -87,7 +87,7 @@ def dashboard(request):
     """ داشبورد مشابه پست لیست است. قابلیت ویرایش و حذف  """
     # list = get_object_or_404(Store)
     contact_list = Store.objects.all()
-    pagination = Paginator(contact_list, 2)
+    pagination = Paginator(contact_list, 3)
     page_number = request.GET.get("page")
     page_obj = pagination.get_page(page_number)
 
@@ -148,7 +148,7 @@ class AddPost(LoginRequiredMixin, CreateView):
     # TODO: UserPassesTestMixin failed for rest
     model = Store
     template_name = "store_warehouse/add_post.html"
-    fields = ("scan_same_QR", "scan_QR", "image_front", "image_behind",
+    fields = ("scan_QR", "image_front",
               "name", "code", "description", "link", "age", "box",
               "variety", "category", "category2", "price")
     success_url = reverse_lazy("store_warehouse:add_post")
