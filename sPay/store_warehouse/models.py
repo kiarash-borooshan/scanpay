@@ -6,6 +6,19 @@ from django.urls import reverse
 # from Account.models import
 
 
+class Customer(models.Model):
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                null=True, blank=True)
+    name = models.CharField(max_length=200,
+                            null=True)
+    email = models.CharField(max_length=200,
+                             null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Store(models.Model):
     """ فیلدهای ۱ تا ۴ باید اجازه دسترسی به دوربین را گرفته و بصورت برخط تصویربرداری کند"""
 
@@ -16,24 +29,24 @@ class Store(models.Model):
                              verbose_name="کاربر")
 
     """ اسکن QrCode برای محصول مشابه که از قبل اسکن شده و اطلاعات آن وارد شده است."""
-    scan_same_QR = models.ImageField(verbose_name="QrCode کالای مشابه",
+    scan_same_QR = models.ImageField(verbose_name="QrCode اسکن",
                                      upload_to="QR-Code/",
                                      blank=True, null=True)
 
-    """ اسکن QrCode برای وارد کردن اطلاعات محصول """
-    scan_QR = models.ImageField(verbose_name="QRCode خام",
-                                upload_to="QR-Code/",
-                                blank=True, null=True)
+    # """ اسکن QrCode برای وارد کردن اطلاعات محصول """
+    # scan_QR = models.ImageField(verbose_name="QRCode خام",
+    #                             upload_to="QR-Code/",
+    #                             blank=True, null=True)
 
     """ تصویر جلوی محصول """
     image_front = models.ImageField(verbose_name="تصویر از جلوی کالا",
                                     upload_to="image_front/",
                                     blank=True, null=True)
 
-    """ تصویر پشت محصول """
-    image_behind = models.ImageField(verbose_name="تصویر از پشت کالا",
-                                     upload_to="image_behind/",
-                                     blank=True, null=True)
+    # """ تصویر پشت محصول """
+    # image_behind = models.ImageField(verbose_name="تصویر از پشت کالا",
+    #                                  upload_to="image_behind/",
+    #                                  blank=True, null=True)
 
     """ نام محصول """
     name = models.CharField(verbose_name="نام کالا",
@@ -88,8 +101,8 @@ class Store(models.Model):
 
     """ قیمت بدون ۳ صفر. به عنوان مثال سیصد و چهل هزار تومان باید بصورت ۳۴۰ و
      یک میلیون و دویست هزار تومان بصورت ۱۲۰۰"""
-    price = models.IntegerField(verbose_name="قیمت به تومان با حذف سه صفر",
-                                blank=True, null=True)
+    price = models.FloatField(verbose_name="قیمت به تومان با حذف سه صفر",
+                              blank=True, null=True)
 
     """ """
     created = models.DateTimeField(auto_now_add=True)
@@ -159,3 +172,48 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.product.name
+
+
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, 
+                                 on_delete=models.SET_NULL, 
+                                 null=True, blank=True)
+    date_order = models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
+    transaction_id = models.CharField(max_length=100,
+                                      null=True, blank=True)
+
+    def __str__(self):
+        return str(self.pk)
+
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Store,
+                                on_delete=models.SET_NULL, 
+                                null=True, blank=True)
+    order = models.ForeignKey(Order, 
+                              on_delete=models.SET_NULL, 
+                              null=True, blank=True)
+    quantity = models.IntegerField(default=0, 
+                                   null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.pk)
+
+
+class Credit(models.Model):
+    """ shipping address """
+    """ ثبت اطلاعات نسیه گیرنده """
+    customer = models.ForeignKey(Customer,
+                                 on_delete=models.SET_NULL,
+                                 blank=True, null=True)
+    order = models.ForeignKey(Order,
+                              on_delete=models.SET_NULL,
+                              null=True, blank=True)
+    address = models.CharField(max_length=200, 
+                               null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address

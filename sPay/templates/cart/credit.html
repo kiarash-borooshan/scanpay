@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} checkout {% endblock %}
+
+{% block content %}
+<div class="col-lg-12">
+    <div class="box-element" id="form-wrapper">
+<!--        <p dir="rtl"> اطلاعات نسیه‌گیرنده </p>-->
+        <br>
+        <form id="form">
+
+            <div id="credit-user-info">
+<!--                <div class="form-field">-->
+                    <input required name="name" type="text" class="form-control" placeholder="اطلاعات نسیه گیرنده ">
+<!--                </div>-->
+            </div>
+            <br>
+
+            <input required
+                   id="form-button"
+                   type="submit"
+                   class="btn btn-success btn-block"
+                   value="ثبت اطلاعات نسیه گیرنده ">
+
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Store, Category2, Comment
+from .models import Store, Category2, Comment, Customer, Order, OrderItem, Credit
 
 
 # class CommentInline(admin.StackedInline):
@@ -39,3 +39,23 @@ class CommentDecore(admin.ModelAdmin):
 #     # list_display = ("writer", "email")
 #     list_display = ("user", "product")
 #
+
+
+@admin.register(Order)
+class CustomerDecore(admin.ModelAdmin):
+    list_display = ("customer", "date_order", "complete", "transaction_id")
+
+
+@admin.register(Customer)
+class OrderDecore(admin.ModelAdmin):
+    list_display = ("user", "name", "email")
+
+
+@admin.register(OrderItem)
+class OrderItemDecore(admin.ModelAdmin):
+    list_display = ("product", "order", "quantity", "date_added")
+
+
+@admin.register(Credit)
+class CreditDecore(admin.ModelAdmin):
+    list_display = ("customer", "order", "address", "date_added")

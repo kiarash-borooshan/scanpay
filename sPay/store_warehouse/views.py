@@ -142,7 +142,7 @@ def dashboard_post_detail(request, pk):
 #                   "store_warehouse/add_post.html",
 #                   {"form": form})
 
-
+# @login_required()
 class AddPost(LoginRequiredMixin, CreateView):
     # TODO: user and slug must exclude and EditPost
     # TODO: UserPassesTestMixin failed for rest
@@ -162,6 +162,7 @@ class AddPost(LoginRequiredMixin, CreateView):
     #     return obj.user == self.request.user
 
 
+# @login_required()
 class EditPost(LoginRequiredMixin, UpdateView):
 
     model = Store
@@ -177,6 +178,7 @@ class EditPost(LoginRequiredMixin, UpdateView):
     #     return obj.user == self.request.user
 
 
+# @login_required()
 class DeletePost(LoginRequiredMixin, DeleteView):
     model = Store
     template_name = "store_warehouse/post_delete.html"
@@ -192,12 +194,14 @@ def search(request):
                   {"list": blog_list})
 
 
+@login_required()
 def cart(request):
 
     return render(request,
                   "cart/cart.html")
 
 
-def checkout(request):
+@login_required()
+def credit(request):
     return render(request,
-                  "cart/checkout.html")
+                  "cart/credit.html")

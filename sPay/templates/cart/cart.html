@@ -5,18 +5,8 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-12">
-        <div class="box-element">
-            <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-outline-dark"> ادامه خرید &#x2190</a>
+        <a href="{% url 'store_warehouse:dashboard' %}" class="btn btn-outline-dark"> اسکن کالای بعدی &#x2190</a>
             <br><br>
-
-            <table class="table">
-                <tr>
-                    <th><h5> تعداد: <strong> 3 </strong></h5></th>
-                    <th><h5> مجموع: <strong> ۴۲ ﷼ </strong></h5></th>
-                    <th><a href="{% url 'store_warehouse:checkout' %}" class="btn btn-success" style= "float:center; margin:5;"> پرداخت </a>  </th>
-                </tr>
-            </table>
-        </div>
 
         <br>
 
@@ -37,6 +27,23 @@
                 <div style="flex:1;"><p> ۳۰۰ ﷼ </p></div>
             </div>
         </div>
+        <br>
+
+        <div class="box-element">
+
+            <table class="table">
+                <tr>
+                    <th><h5> تعداد: <strong> 3 </strong></h5></th>
+                    <th><h5> مجموع: <strong> ۴۲ ﷼ </strong></h5></th>
+                    <th><a href="#" class="btn btn-success" style= "float:center; margin:5;">  نقدی  </a>  </th>
+                    <th><a href="#" class="btn btn-success" style= "float:center; margin:5;">  کارت‌خوان  </a>  </th>
+                    <th><a href="#" class="btn btn-success" style= "float:center; margin:5;"> کارت به کارت  </a>  </th>
+                    <th><a href="{% url 'store_warehouse:credit' %}" class="btn btn-success" style= "float:center; margin:5;"> نسیه </a>  </th>
+                </tr>
+            </table>
+        </div>
+        <br>
+
     </div>
 </div>
 {% endblock %}
